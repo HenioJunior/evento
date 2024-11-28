@@ -29,10 +29,14 @@ public class Atividade {
     @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
+    @OneToMany(mappedBy = "atividade")
+    private List<Bloco> blocos = new ArrayList<>();
+
     public Atividade() {
     }
 
-    public Atividade(Integer id, String nome, String descricao, Double preco, Categoria categoria) {
+    public Atividade(Integer id, String nome, String descricao,
+                     Double preco,Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -62,5 +66,9 @@ public class Atividade {
 
     public Categoria getCategoria() {
         return categoria;
+    }
+
+    public List<Bloco> getBlocos() {
+        return blocos;
     }
 }
