@@ -25,14 +25,19 @@ public class Atividade {
             inverseJoinColumns = @JoinColumn(name = "participante_id"))
     private List<Participante> participantes = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
     public Atividade() {
     }
 
-    public Atividade(Integer id, String nome, String descricao, Double preco) {
+    public Atividade(Integer id, String nome, String descricao, Double preco, Categoria categoria) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
+        this.categoria = categoria;
     }
 
     public Integer getId() {
@@ -53,5 +58,9 @@ public class Atividade {
 
     public List<Participante> getParticipantes() {
         return participantes;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
     }
 }
